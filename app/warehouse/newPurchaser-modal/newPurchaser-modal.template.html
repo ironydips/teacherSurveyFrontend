@@ -1,0 +1,52 @@
+<!-- / profileComponent \ -->
+<div class="profileComponent">
+    <div class="container">
+        <div class="profileSm">
+            <h2>Teacher Detail</h2>
+            <form name="userForm" novalidate>
+                <div class="inner-adjust">
+                    <div class="input-main">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label>Qualifications:</label>
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="text" name="myName" ng-model="$ctrl.teacherDetail.qualifications" class="form-controls" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label>Address</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" ng-model="$ctrl.teacherDetail.address" class="form-controls">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label>Teaching Area:</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" ng-model="$ctrl.teacherDetail.teachingArea" class="form-controls">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label>Teaching Experience:</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <textarea class="form-control" ng-model="$ctrl.teacherDetail.teachingExperience" style="width: 255px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="btn-main">
+                        <button type="button" ng-click="$ctrl.cancel()" class="btn btn-sm btn-default">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- \ profileComponent end / -->

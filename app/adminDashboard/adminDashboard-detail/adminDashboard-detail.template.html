@@ -1,0 +1,69 @@
+<style>
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 100%;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+</style>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!-- <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div> -->
+        <!-- <ul class="nav navbar-nav">
+      
+    </ul> -->
+        <br>
+        <div class="row">
+        <div class="col-sm-1"></div>
+            <div class="col-sm-1">
+                <a class="btn btn-sm btn-success" ui-sref="adminLayout.addBrandDetails">Back</a>
+            </div>
+            <div class="col-sm-2">
+                <a class="btn btn-sm btn-success" ng-click="$ctrl.viewFullOrderModal()">Add/View Classes/Subject</a>
+            </div>
+        </div>
+        <br>
+    </div>
+</nav>
+<table style="text-align:center;" class="table table-hover">
+    <tr>
+        <th style="font-size: 13px;" class="col-md-2">Teacher Name</th>
+        <th style="font-size: 13px;" class="col-md-1">Gender</th>
+        <th style="font-size: 13px;" class="col-md-2">Contact Number</th>
+        <th style="font-size: 13px;" class="col-md-1">EmailID</th>
+        <!-- <th style="font-size: 13px;" class="col-md-2">Qualifications</th>
+        <th style="font-size: 13px;" class="col-md-2">Address</th>
+        <th style="font-size: 13px;" class="col-md-2">Teaching Area</th>
+        <th style="font-size: 13px;" class="col-md-2">Teaching Experience</th> -->
+        <th style="font-size: 13px;" class="col-md-2">Classes</th>
+        <th style="font-size: 13px;" class="col-md-2">More Detail</th>
+    </tr>
+    <tr  ng-repeat="teacher in $ctrl.teachers">
+        <td>{{teacher.teacherName}}</td>
+        <td>{{teacher.gender}}</td>
+        <td>{{teacher.contactNumber}}</td>
+        <td>{{teacher.emailID}}</td>
+        <td>
+            <table>
+                <tr>
+                    <th>Class</th>
+                    <th>Subject</th>
+                </tr>
+                <tr ng-repeat="cls in teacher.classesSubject">
+                    <td>{{cls.class}}</td>
+                    <td>{{cls.subjects | commaSeparationFilter : 'subject'}}</td>
+                </tr>
+            </table>
+        </td>
+        <td><a class="btn btn-success btn-sm" ng-click="$ctrl.viewMoreDetail(teacher)"> View</a></td>
+    </tr>
+</table>

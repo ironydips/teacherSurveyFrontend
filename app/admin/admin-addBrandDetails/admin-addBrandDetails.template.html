@@ -1,0 +1,184 @@
+<!-- / component2 \ -->
+<div class="component2">
+    <div class="container">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h4>Personal Information</h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <label>
+                                <h5>Name:</h5></label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="$ctrl.classObj.teacherName" name="">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <label>
+                                <h5>Gender:</h5></label>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="col-sm-4">
+                                <input type="radio" value="male" ng-model="$ctrl.classObj.gender" name="">Male
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="radio" value="female" ng-model="$ctrl.classObj.gender" name="">Female
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <label>
+                                <h5>Contact Number:</h5></label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="$ctrl.classObj.contactNumber" class="form-control" name="">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <label>
+                                <h5>EmailID:</h5></label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="$ctrl.classObj.emailID" class="form-control" name="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <label>
+                                <h5>Qualifications:</h5></label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="$ctrl.classObj.qualifications" class="form-control" name="">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <label>
+                                <h5>Address:</h5></label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="$ctrl.classObj.address" class="form-control" name="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <label>
+                                <h5>Teaching Area:</h5></label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="$ctrl.classObj.teachingArea" class="form-control" name="">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <label>
+                                <h5>Teaching Experience:</h5></label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="$ctrl.classObj.teachingExperience" class="form-control" name="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <label>
+                                <h5>Select Class:</h5></label>
+                        </div>
+                        <div class="col-sm-6">
+                            <select name="repeatSelect" class="form-control" id="repeatSelect" ng-click="$ctrl.setSubjects($ctrl.className.name)" ng-model="$ctrl.className.name">
+                                <option value="">--Please Select--</option>
+                                <option ng-repeat="option in $ctrl.classes" value="{{option.class}}">{{option.class}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                    </div>
+                </div>
+                <br>
+                <div class="row" ng-show="$ctrl.className.name">
+                    <div class="well">
+                        <div class="row">
+                            <ul>
+                                <li class="active full" ng-repeat="option in $ctrl.subjectArr[0].subjects">
+                                    <a style="color: black;height: 100%;border: none; background: transparent;"><span style="float:left;position: relative;bottom: 3px;">{{option.subject}}</span>
+                                    </a>
+                                    <input ng-model="option.selected" ng-true-value="'{{option.subject}}'" ng-false-value="''" type="checkbox" name="">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="row text-center">
+                            <a class="btn btn-sm btn-primary" ng-click="$ctrl.submitSubject($ctrl.subjectArr[0].subjects)">Save</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-show="$ctrl.showTable">
+                    <table class="table table-condensed text-center">
+                        <thead>
+                            <tr>
+                                <th>Class</th>
+                                <th>Subject</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="subject in $ctrl.classArr">
+                                <td>{{subject.class}}</td>
+                                <td>{{subject.subjects | commaSeparationFilter : 'subject'}}</td>
+                                <td><a ng-click="$ctrl.deleteSubject($index)" class="btn btn-sm btn-danger">Delete</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <!-- <div class="col-sm-1"></div> -->
+                    <div class="col-sm-12">
+                        <div style="font-size: 20px;">
+                            Terms &amp; Condition:
+                        </div>
+                        <br>
+                        <div>1 : We only inform the Registered teachers/tutors for any teaching vacancy through phone, email or via SMS.</div>
+                        <br>
+                        <div>2 : More details are required depending upon teacher's interest.</div>
+                        <br>
+                        <div>3 :Every teachers/tutors will be charged 50% of his/her only first month's salary/tuition fees.
+                            <div>
+                                <br>
+                                <div>4 : Registration Charges should be Rs.800 only.</div>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <!-- <div class="col-sm-1">
+                                <input ng-model="$ctrl.checked" ng-true-value="'$ctrl.checked'" ng-false-value="''" type="checkbox" name="">
+                            </div> -->
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-1">
+                                            <input ng-model="$ctrl.checked" ng-true-value="'$ctrl.checked'" ng-false-value="''" type="checkbox" name="">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div style="position: relative;top: 3px;">I Agree</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <a class="btn btn-primary btn-lg" ng-click="$ctrl.addTeacher($ctrl.classObj)" ng-disabled="!$ctrl.checked">Submit</a>
+                </div>
+            </div>
+        </div>
+        <!-- \ component2 end / -->
