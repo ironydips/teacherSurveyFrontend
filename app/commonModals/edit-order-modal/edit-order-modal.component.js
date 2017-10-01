@@ -17,6 +17,7 @@
             ctrl.inputs.subjects.push({})
         }
         ctrl.submitSubjects = function () {
+            ctrl.loader = true;
             ctrl.classSubjectArr = {
                 "class" : ctrl.inputs.class,
                 "subjects" : ctrl.inputs.subjects
@@ -27,11 +28,13 @@
                     data: ctrl.classSubjectArr,
                 }).then(function(response) {
                     if (response) {
+                        ctrl.loader = false;
                         ctrl.modalInstance.close({ action: ctrl.inputs.subjects });
                     }
                 })
                 .catch(function(error) {
-
+                    console.log("error while adding lass/subjects: ");
+                    console.log(error)
                 });
             //ctrl.modalInstance.close({ action: ctrl.inputs.subjects });
         }

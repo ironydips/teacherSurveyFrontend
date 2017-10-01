@@ -4,6 +4,9 @@
         <h3 ng-show="$ctrl.update">Update Subject</h3>
     </div>
     <div class="panel-body">
+    <div class="loading" ng-show="$ctrl.loader">
+             Loading&#8230;
+         </div>
         <!-- <div class="row"> -->
             <div ng-repeat="item in $ctrl.inputs.subjects">
                 <input ng-model="item.subject" class="form-control" />

@@ -22,7 +22,8 @@
                     }
                 })
                 .catch(function(error) {
-
+                    console.log("error while getting classes and subjects:");
+                    console.log(error)
                 });
 
         };
@@ -55,7 +56,7 @@
                 });
         }
         ctrl.save = function() {
-
+            ctrl.modalInstance.close();
         }
         ctrl.init();
 

@@ -6,6 +6,10 @@
                 <h4>Personal Information</h4>
             </div>
             <div class="panel-body">
+            <br>
+         <div class="loading" ng-show="$ctrl.loader">
+             Loading&#8230;
+         </div>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="col-sm-4">
@@ -98,7 +102,7 @@
                                 <h5>Select Class:</h5></label>
                         </div>
                         <div class="col-sm-6">
-                            <select name="repeatSelect" class="form-control" id="repeatSelect" ng-click="$ctrl.setSubjects($ctrl.className.name)" ng-model="$ctrl.className.name">
+                            <select name="repeatSelect" class="form-control" ng-keyup="$ctrl.setSubjects($ctrl.className.name)" id="repeatSelect" ng-click="$ctrl.setSubjects($ctrl.className.name)" ng-model="$ctrl.className.name">
                                 <option value="">--Please Select--</option>
                                 <option ng-repeat="option in $ctrl.classes" value="{{option.class}}">{{option.class}}</option>
                             </select>
@@ -120,7 +124,9 @@
                             </ul>
                         </div>
                         <div class="row text-center">
-                            <a class="btn btn-sm btn-primary" ng-click="$ctrl.submitSubject($ctrl.subjectArr[0].subjects)">Save</a>
+                        <span ng-show="$ctrl.enableSave" style="color: red">Class already selected</span><br>
+                            <a class="btn btn-sm btn-primary" ng-click="$ctrl.submitSubject($ctrl.subjectArr[0].subjects)" ng-disabled="$ctrl.enableSave">Save</a>
+
                         </div>
                     </div>
                 </div>
@@ -137,7 +143,7 @@
                             <tr ng-repeat="subject in $ctrl.classArr">
                                 <td>{{subject.class}}</td>
                                 <td>{{subject.subjects | commaSeparationFilter : 'subject'}}</td>
-                                <td><a ng-click="$ctrl.deleteSubject($index)" class="btn btn-sm btn-danger">Delete</a></td>
+                                <td><a ng-click="$ctrl.editSubject(subject, $index)" class="btn btn-sm btn-primary">Edit</a>&nbsp;&nbsp;<a ng-click="$ctrl.deleteSubject($index)" class="btn btn-sm btn-danger">Delete</a></td>
                             </tr>
                         </tbody>
                     </table>
