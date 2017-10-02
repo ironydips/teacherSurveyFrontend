@@ -15,7 +15,7 @@
             ctrl.className = {};
             ctrl.classObj = {
                 teacherName: '',
-                gender:      'male',
+                gender: 'male',
                 contactNumber: '',
                 emailID: '',
                 qualifications: '',
@@ -78,14 +78,16 @@
                 if (data.class == className) {
                     return data.subjects;
                 }
-            });
+            })[0];
             
             var selectedClass = ctrl.classArr.filter(data => data.class == className)[0];
 
             if(selectedClass){
-                ctrl.subjectArr.subjects.forEach(subject => {
-                    subject.selected = selectedClass.subjects.indexOf(subject) > -1;
+                ctrl.subjectArr.subjects.forEach(subjectData => {
+                    subject.selected = selectedClass.subjects.map(data => data.subject).indexOf(subjectData.subject) > -1;
                 });
+            } else{
+                ctrl.subjectArr.subjects.forEach(data => data.selected = false);
             }
         }
 
