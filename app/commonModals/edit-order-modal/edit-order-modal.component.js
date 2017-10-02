@@ -17,6 +17,7 @@
             ctrl.inputs.subjects.push({})
         }
         ctrl.submitSubjects = function () {
+            ctrl.inputs.subjects  = ctrl.inputs.subjects.filter(data => !!data.subject);
             ctrl.loader = true;
             ctrl.classSubjectArr = {
                 "class" : ctrl.inputs.class,
@@ -39,6 +40,7 @@
             //ctrl.modalInstance.close({ action: ctrl.inputs.subjects });
         }
         ctrl.updateSubjects = function(details){
+            ctrl.inputs.subjects  = ctrl.inputs.subjects.filter(data => !!data.subject);
             var obj = {
                 "class" : ctrl.inputs.class,
                 "subjects" : ctrl.inputs.subjects

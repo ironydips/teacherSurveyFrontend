@@ -3,7 +3,7 @@
     <div class="container">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h4>Personal Information</h4>
+                <h4>RAWAT HOME TUTORS<br/><span>(Teacher's Form)</span></h4>
             </div>
             <div class="panel-body">
             <br>
@@ -102,7 +102,7 @@
                                 <h5>Select Class:</h5></label>
                         </div>
                         <div class="col-sm-6">
-                            <select name="repeatSelect" class="form-control" ng-keyup="$ctrl.setSubjects($ctrl.className.name)" id="repeatSelect" ng-click="$ctrl.setSubjects($ctrl.className.name)" ng-model="$ctrl.className.name">
+                            <select name="repeatSelect" class="form-control" id="repeatSelect" ng-change="$ctrl.setSubjects($ctrl.className.name)" ng-model="$ctrl.className.name">
                                 <option value="">--Please Select--</option>
                                 <option ng-repeat="option in $ctrl.classes" value="{{option.class}}">{{option.class}}</option>
                             </select>
@@ -124,8 +124,7 @@
                             </ul>
                         </div>
                         <div class="row text-center">
-                        <span ng-show="$ctrl.enableSave" style="color: red">Class already selected</span><br>
-                            <a class="btn btn-sm btn-primary" ng-click="$ctrl.submitSubject($ctrl.subjectArr[0].subjects)" ng-disabled="$ctrl.enableSave">Save</a>
+                            <a class="btn btn-sm btn-primary" ng-click="$ctrl.submitSubject($ctrl.subjectArr[0].subjects)">Save</a>
 
                         </div>
                     </div>
@@ -140,10 +139,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="subject in $ctrl.classArr">
+                            <tr ng-repeat="subject in $ctrl.classArr | orderBy:'class'">
                                 <td>{{subject.class}}</td>
                                 <td>{{subject.subjects | commaSeparationFilter : 'subject'}}</td>
-                                <td><a ng-click="$ctrl.editSubject(subject, $index)" class="btn btn-sm btn-primary">Edit</a>&nbsp;&nbsp;<a ng-click="$ctrl.deleteSubject($index)" class="btn btn-sm btn-danger">Delete</a></td>
+                                <td><a ng-click="$ctrl.editSubject(subject, $index)" class="btn btn-sm btn-primary">Edit</a>&nbsp;&nbsp;<a ng-click="$ctrl.deleteSubject(subject.class)" class="btn btn-sm btn-danger">Delete</a></td>
                             </tr>
                         </tbody>
                     </table>
